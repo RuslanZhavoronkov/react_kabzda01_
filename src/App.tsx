@@ -8,47 +8,63 @@ import "./App.css";
 //hello();
 
 function App() {
-  debugger;
   // полезное что-то
-
+  console.log("App rendering");
   //обязана вернуть JSX
   return (
     <div>
-      This is APP component
+      <AppTitle />
       <Rating />
       <Accordion />
+      <Rating />
     </div>
   );
 }
 
+function AppTitle() {
+  console.log("AppTitle rendering");
+  return <>This is APP component</>;
+}
+
 function Rating() {
-  debugger;
+  console.log("Rating rendering");
   return (
-    <div>
+    <>
       <Star />
       <Star />
       <Star />
       <Star />
       <Star />
-    </div>
+    </>
   );
 }
 
 function Star() {
+  console.log("Star rendering");
   return <div>star</div>;
 }
 
 function Accordion() {
-  debugger;
+  console.log("Accordion rendering");
   return (
     <div>
-      <h3>Меню</h3>
-      <ul>
-        <li>1</li>
-        <li>2</li>
-        <li>3</li>
-      </ul>
+      <AccordionTitle />
+      <AccordionBody />
     </div>
+  );
+}
+
+function AccordionTitle() {
+  return <h3>Меню</h3>;
+}
+
+function AccordionBody() {
+  return (
+    <ul>
+      <li>1</li>
+      <li>2</li>
+      <li>3</li>
+    </ul>
   );
 }
 
