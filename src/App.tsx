@@ -1,28 +1,55 @@
-import React from 'react';
-import './App.css';
+import React from "react";
+import "./App.css";
+
+/*function hello() {
+  debugger;
+  alert("Hello IT-KAMASUTRA");
+}*/
+//hello();
 
 function App() {
-    return (
-        <div className="App">
-            <div>
-                <h3>What to learn</h3>
-                <div>
-                    <input/>
-                    <button>+</button>
-                </div>
-                <ul>
-                    <li><input type="checkbox" checked={true}/> <span>HTML&CSS</span></li>
-                    <li><input type="checkbox" checked={true}/> <span>JS</span></li>
-                    <li><input type="checkbox" checked={false}/> <span>React</span></li>
-                </ul>
-                <div>
-                    <button>All</button>
-                    <button>Active</button>
-                    <button>Completed</button>
-                </div>
-            </div>
-        </div>
-    );
+  debugger;
+  // полезное что-то
+
+  //обязана вернуть JSX
+  return (
+    <div>
+      This is APP component
+      <Rating />
+      <Accordion />
+    </div>
+  );
+}
+
+function Rating() {
+  debugger;
+  return (
+    <div>
+      <Star />
+      <Star />
+      <Star />
+      <Star />
+      <Star />
+    </div>
+  );
+}
+
+function Star() {
+  return <div>star</div>;
+}
+
+function Accordion() {
+  debugger;
+  return (
+    <div>
+      <h3>Меню</h3>
+      <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+      </ul>
+    </div>
+  );
 }
 
 export default App;
