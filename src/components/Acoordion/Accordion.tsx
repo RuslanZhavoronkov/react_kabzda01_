@@ -4,7 +4,7 @@ function Accordion(props: any) {
   console.log("Accordion rendering");
   return (
     <div>
-      <AccordionTitle title={props.title} />
+      <AccordionTitle title={props.titleValue} />
       <AccordionBody />
     </div>
   );
@@ -12,7 +12,7 @@ function Accordion(props: any) {
 
 function AccordionTitle(props: any) {
   console.log("AccordionTitle rendering");
-  return <h3>{props.title}</h3>;
+  return <h3>--{props.title}--</h3>;
 }
 
 function AccordionBody() {
