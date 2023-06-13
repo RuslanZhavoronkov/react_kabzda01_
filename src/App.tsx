@@ -20,7 +20,7 @@ function App() {
       Article 1
       <Rating value={3} />
       <Accordion titleValue={"Menu"} />
-      <Accordion titlevalue={"Users"} />
+      <Accordion titleValue={"Users"} />
       Article 2
       <Rating value={0} />
       <Rating value={1} />
