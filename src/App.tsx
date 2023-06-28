@@ -1,6 +1,7 @@
 import React from "react";
 import "./App.css";
 import Accordion from "./components/Acoordion/Accordion";
+import { OnOff } from "./components/OnOff/OnOff";
 import { Rating } from "./components/Rating/Rating";
 
 /*function hello() {
@@ -11,14 +12,14 @@ import { Rating } from "./components/Rating/Rating";
 
 function App() {
   // полезное что-то
-  console.log("App rendering");
+
   //обязана вернуть JSX
   return (
     <div>
-      <PageTitle title={"This is APP component"} />
+      {/* <PageTitle title={"This is APP component"} />
       <PageTitle title={"My friends"} />
       Article 1
-      <Rating value={3} />
+      <Rating value={3} />*/}
       <Accordion titleValue={"Menu"} collapsed={true} />
       <Accordion titleValue={"Users"} collapsed={false} />
       Article 2
@@ -28,6 +29,8 @@ function App() {
       <Rating value={3} />
       <Rating value={4} />
       <Rating value={5} />
+      Article 3
+      <OnOff value={true}/>
     </div>
   );
 }
