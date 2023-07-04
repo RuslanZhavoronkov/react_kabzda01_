@@ -12,8 +12,6 @@ export function UncontrolledAccordion(props: UncontrolledAccordionPropsType) {
 
   const onClickHandler = () => {
     collapsed ? setCollapsed(false) : setCollapsed(true);
-
-    //swernu (true);
   };
 
   return (

@@ -17,23 +17,26 @@ function App() {
   console.log("App rendered");
   //обязана вернуть JSX
   return (
-    <div>
+    <div className={"App"}>
+      {/* <OnOff />
       <OnOff />
       <OnOff />
       <OnOff />
+      <UncontrolledAccordion titleValue={"Users"} /> */}
       <OnOff />
       <UncontrolledAccordion titleValue={"Menu"} />
-      <UncontrolledAccordion titleValue={"Users"} />
       <UncontrolledRating />
+      <Rating value={3} />
+      <Accordion titleValue={"Menu"} collapsed={true} />
 
-
+      
       {/* <OnOff on={true} />
       <OnOff on={false} /> */}
 
       {/* <PageTitle title={"This is APP component"} />
       <PageTitle title={"My friends"} />
       Article 1
-      <Rating value={3} />
+      
       <Accordion titleValue={"Menu"} collapsed={true} />
       <Accordion titleValue={"Users"} collapsed={false} />
       Article 2
