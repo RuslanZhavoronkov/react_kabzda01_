@@ -4,6 +4,7 @@ import Accordion from "./components/Acoordion/Accordion";
 import { OnOff } from "./components/OnOff/OnOff";
 import { Rating } from "./components/Rating/Rating";
 import { UncontrolledAccordion } from "./components/UncontrolledAccordion/UncontrolledAccordion";
+import { UncontrolledRating } from "./components/UncontrolledRating/UncontrolledRating";
 
 /*function hello() {
   debugger;
@@ -23,6 +24,7 @@ function App() {
       <OnOff />
       <UncontrolledAccordion titleValue={"Menu"} />
       <UncontrolledAccordion titleValue={"Users"} />
+      <UncontrolledRating />
 
 
       {/* <OnOff on={true} />
