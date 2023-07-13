@@ -1,8 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import "./App.css";
 import Accordion from "./components/Acoordion/Accordion";
 import { OnOff } from "./components/OnOff/OnOff";
-import { Rating } from "./components/Rating/Rating";
+import { Rating, RatingValueType } from "./components/Rating/Rating";
 import { UncontrolledAccordion } from "./components/UncontrolledAccordion/UncontrolledAccordion";
 import { UncontrolledRating } from "./components/UncontrolledRating/UncontrolledRating";
 
@@ -14,8 +14,11 @@ import { UncontrolledRating } from "./components/UncontrolledRating/Uncontrolled
 
 function App() {
   // полезное что-то
-  console.log("App rendered");
+  
   //обязана вернуть JSX
+
+let[ratingValue, setRatingValue] = useState< RatingValueType > (1)
+console.log (ratingValue);
   return (
     <div className={"App"}>
       {/* <OnOff />
@@ -23,9 +26,10 @@ function App() {
       <OnOff />
       <OnOff />
       <UncontrolledAccordion titleValue={"Users"} /> */}
-      <OnOff />
-      <UncontrolledAccordion titleValue={"Menu"} />
-      <UncontrolledRating />
+      {/* <OnOff />
+      <UncontrolledAccordion titleValue={"Menu"} /> */}
+      {/* <Rating value={ratingValue}  onClick={setRatingValue}/> */}
+      <UncontrolledRating /> 
       {/* <Rating value={3} />
       <Accordion titleValue={"Menu"} collapsed={true} /> */}
 
@@ -51,13 +55,13 @@ function App() {
   );
 }
 
-type PageTitlePropsType = {
-  title: string;
-};
+// type PageTitlePropsType = {
+//   title: string;
+// };
 
-function PageTitle(props: PageTitlePropsType) {
-  console.log("AppTitle rendering");
-  return <h1>{props.title}</h1>;
-}
+// function PageTitle(props: PageTitlePropsType) {
+//   console.log("AppTitle rendering");
+//   return <h1>{props.title}</h1>;
+// }
 
 export default App;//kndclkdnsckn
