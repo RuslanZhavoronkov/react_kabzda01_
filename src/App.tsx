@@ -6,21 +6,32 @@ import { Rating, RatingValueType } from "./components/Rating/Rating";
 import { UncontrolledAccordion } from "./components/UncontrolledAccordion/UncontrolledAccordion";
 import { UncontrolledRating } from "./components/UncontrolledRating/UncontrolledRating";
 
-/*function hello() {
-  debugger;
-  alert("Hello IT-KAMASUTRA");
-}*/
-//hello();
+
 
 function App() {
-  // полезное что-то
-  
-  //обязана вернуть JSX
+ 
 
 let[ratingValue, setRatingValue] = useState< RatingValueType > (1)
-console.log (ratingValue);
+let[accordionCollapsed, setAccordionCollapsed] = useState<boolean> (true)
+
   return (
     <div className={"App"}>
+     <Rating value = {ratingValue} onClick={setRatingValue} />
+     <UncontrolledRating /> 
+     <Accordion titleValue={"Menu"} collapsed={accordionCollapsed} callBack = {()=>setAccordionCollapsed(!accordionCollapsed)}/>
+     </div>
+  );
+}
+
+export default App;
+
+
+
+
+
+
+{/* ---------------------------------------------------------------------------------------------------------------------------------------------- */}
+
       {/* <OnOff />
       <OnOff />
       <OnOff />
@@ -29,7 +40,7 @@ console.log (ratingValue);
       {/* <OnOff />
       <UncontrolledAccordion titleValue={"Menu"} /> */}
       {/* <Rating value={ratingValue}  onClick={setRatingValue}/> */}
-      <UncontrolledRating /> 
+     
       {/* <Rating value={3} />
       <Accordion titleValue={"Menu"} collapsed={true} /> */}
 
@@ -51,9 +62,7 @@ console.log (ratingValue);
       <Rating value={4} />
       <Rating value={5} />
       Article 3 */}
-    </div>
-  );
-}
+
 
 // type PageTitlePropsType = {
 //   title: string;
@@ -64,4 +73,4 @@ console.log (ratingValue);
 //   return <h1>{props.title}</h1>;
 // }
 
-export default App;//kndclkdnsckn
+// export default App;//kndclkdnsckn
