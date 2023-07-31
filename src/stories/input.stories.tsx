@@ -1,56 +1,58 @@
-import React, { ChangeEvent, useState} from "react"
+import React, { ChangeEvent, useRef, useState } from "react"
 
 
 
 export default {
     title: 'input'
-    
+
 }
 
 //-------------------------------------------------------------------------------------------------------------------------
 export const UncontrolledInput = () => <input />
 
-export const TrackValueUncontrolledInput  = () => {
-const[value, setValue]=useState('')
+export const TrackValueUncontrolledInput = () => {
+    const [value, setValue] = useState('')
 
-const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
-    setValue(e.currentTarget.value)
-}
+    const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
+        setValue(e.currentTarget.value)
+    }
     return (
         <>
-         <input value = {value} onChange={onChangeHandler}/> - {value}
+            <input value={value} onChange={onChangeHandler} /> - {value}
         </>
-       
+
     )
 }
 
 //----------------------------------------------------------------------------------------------------------------------------
 
-export const GetValueUncontrolledInputByButtonPress  = () => {
-    const[value, setValue]=useState('')
-    
-    const onClickHandler = () => {
-        const el = document.getElementById('inputId') as HTMLInputElement;
-        setValue(el.value)
-    }
+export const GetValueUncontrolledInputByButtonPress = () => {
+const[value, setValue] = useState('') //хук вводимое инпутом сообщение
+const inputRef = useRef<HTMLInputElement>(null) //хук хранящий ссылку на элемент
 
-        return (
-            <>
-             <input id={'inputId'}/> <button onClick={onClickHandler}>save</button> actual value - {value}
-            </>
-           
-        )
-    }
-    
-    //----------------------------------------------------------------------------------------------------------------------------------------
+const onClickHandler = () => {
+    const el = inputRef.current as HTMLInputElement //достали из хранилища useRef элемент
+    setValue(el.value)
+
+}
 
 
+    return (
+        <>
+        <input ref={inputRef}/><button onClick={onClickHandler}>save</button> ---{value}
+        </>
+    )
+}
 
-
+//----------------------------------------------------------------------------------------------------------------------------------------
 
 
 
-export const ControlledInputWithFixedValue = () => <input value={'incubator.by'}/>
+
+
+
+
+export const ControlledInputWithFixedValue = () => <input value={'incubator.by'} />
 
 
 
