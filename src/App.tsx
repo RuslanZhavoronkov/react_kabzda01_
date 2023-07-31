@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./App.css";
-import {Accordion} from "./components/Acoordion/Accordion";
+import { Accordion, ItemType } from "./components/Acoordion/Accordion";
 import { OnOff } from "./components/OnOff/OnOff";
 import { Rating, RatingValueType } from "./components/Rating/Rating";
 import { UncontrolledAccordion } from "./components/UncontrolledAccordion/UncontrolledAccordion";
@@ -10,19 +10,35 @@ import { UncontrolledOnOff } from "./components/UncontrolledOnOff/UncontrolledOn
 
 
 function App() {
- 
 
-let[ratingValue, setRatingValue] = useState< RatingValueType > (1)
-let[accordionCollapsed, setAccordionCollapsed] = useState<boolean> (true)
-let[switchOn, setSwitchOn] = useState <boolean>(false)
+
+  let [ratingValue, setRatingValue] = useState<RatingValueType>(1)
+  let [accordionCollapsed, setAccordionCollapsed] = useState<boolean>(true)
+  let [switchOn, setSwitchOn] = useState<boolean>(false)
+  let [items, setItems] = useState<ItemType[]>(
+    [
+      { title: 'Sushi', value: '1' },
+      { title: 'Milk', value: '2' },
+      { title: 'Aqua', value: '3' }
+    ]
+  )
+
+  const onChangeCollapsedHandler = () => {
+    setAccordionCollapsed(!accordionCollapsed)
+  }
+
+  const onClick = (value: any) => {
+    console.log(value)
+  }
 
   return (
     <div className={"App"}>
-     <Rating value = {ratingValue} onClick={setRatingValue} />
-     <UncontrolledRating /> 
-     <Accordion titleValue={"Menu"} collapsed={accordionCollapsed} onChange = {()=>setAccordionCollapsed(!accordionCollapsed)}/>
-     <UncontrolledOnOff onChange={setSwitchOn}/> {switchOn.toString()}
-     </div>
+      <Rating value={ratingValue} onClick={setRatingValue} />
+      <UncontrolledRating />
+      <Accordion titleValue={"Menu"} collapsed={accordionCollapsed} onChange={onChangeCollapsedHandler} items={items} onClick={onClick} />
+      <UncontrolledOnOff onChange={setSwitchOn} /> {switchOn.toString()}
+      
+    </div>
   );
 }
 
@@ -33,25 +49,25 @@ export default App;
 
 
 
-{/* ---------------------------------------------------------------------------------------------------------------------------------------------- */}
+{/* ---------------------------------------------------------------------------------------------------------------------------------------------- */ }
 
-      {/* <OnOff /><OnOff on = {switchOn}  onChange={setSwitchOn}/>
+{/* <OnOff /><OnOff on = {switchOn}  onChange={setSwitchOn}/>
       <OnOff />
       <OnOff />
       <OnOff />
       <UncontrolledAccordion titleValue={"Users"} /> */}
-      {/* <OnOff />
+{/* <OnOff />
       <UncontrolledAccordion titleValue={"Menu"} /> */}
-      {/* <Rating value={ratingValue}  onClick={setRatingValue}/> */}
-     
-      {/* <Rating value={3} />
+{/* <Rating value={ratingValue}  onClick={setRatingValue}/> */ }
+
+{/* <Rating value={3} />
       <Accordion titleValue={"Menu"} collapsed={true} /> */}
 
-      
-      {/* <OnOff on={true} />
+
+{/* <OnOff on={true} />
       <OnOff on={false} /> */}
 
-      {/* <PageTitle title={"This is APP component"} />
+{/* <PageTitle title={"This is APP component"} />
       <PageTitle title={"My friends"} />
       Article 1
       

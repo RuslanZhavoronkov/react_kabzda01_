@@ -81,7 +81,7 @@ export const ControlledInputCheckbox = () => {
 //-----------------------------------------------------------------------------------------------------------------------------------------------
 
 export const ControlledSelect = () => {
-    const [selectValue, setSelectValue] = useState<string | undefined>('1')
+    const [selectValue, setSelectValue] = useState<string | undefined>(undefined)
 
     const onChangeSelectValue = (e:ChangeEvent<HTMLSelectElement>) => {
         setSelectValue(e.currentTarget.value)
@@ -89,11 +89,11 @@ export const ControlledSelect = () => {
 
     return (
         <select value={selectValue} onChange={onChangeSelectValue}>
-            <option>Moskva</option>
-            <option value={'2'}>Tver</option>
-            <option value={'3'}>Tomsk</option>
-            <option value={'4'}>Arhangelsk</option>
-            <option value={'5'}>Minsk</option>
+            <option>none</option>
+            <option value={'1'}>Tver</option>
+            <option value={'2'}>Tomsk</option>
+            <option value={'3'}>Arhangelsk</option>
+            <option value={'4'}>Minsk</option>
         </select>
 
     )
