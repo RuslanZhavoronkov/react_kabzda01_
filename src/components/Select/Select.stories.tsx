@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Select } from "./Select";
 
 export default {
@@ -5,8 +6,42 @@ export default {
     component: Select
 }
 
-export const ModeSelectChanging = () => <Select value='STUDENTS' onChange = {()=> alert('Yo')} 
-items={[{title:'Dimych', value: '1'}, {title:'Valera', value: '2'}, {title:'Artem', value:'3'}, {title:'Victor', value: '4'}]}/>
+export const WithValue = () => {
+    const [value, setValue] = useState<any>('1')
+
+    const onChangeHandler = (newValue: any) => setValue(newValue)
+
+    return (
+        <>
+            <Select value={value} onChange={onChangeHandler}
+                items={[
+                    { value: '1', title: 'Minsk' },
+                    { value: '2', title: 'Moscow' },
+                    { value: '3', title: 'Kiev' },
+                ]} />
+        </>
+    )
+
+
+}
+
+export const WithoutValue = () => {
+    const [value, setValue] = useState<any>(null)
+    const onChangeHandler = (newValue: string) => setValue(newValue)
+
+    return (
+        <>
+            <Select onChange={onChangeHandler}
+                value={value}
+                items={[
+                    { value: '1', title: 'Minsk' },
+                    { value: '2', title: 'Moscow' },
+                    { value: '3', title: 'Kiev' },
+                ]} />
+        </>
+    )
+
+}
 
 
 
@@ -14,11 +49,8 @@ items={[{title:'Dimych', value: '1'}, {title:'Valera', value: '2'}, {title:'Arte
 
 
 
-//     const [value, setValue] = useState<boolean>(true)
-//     const onChangeHandler = () => {
-//         setValue(!value)
-//     }
-//     return <Accordion titleValue={"Users"} collapsed={value} onChange={onChangeHandler}
-//         items={[{title:'Dimych', value: '1'}, {title:'Valera', value: '2'}, {title:'Artem', value:'3'}, {title:'Victor', value: '4'}]}
-//         onClick={(value)=> {(alert(`User with ${value} should be happy`))}}/>
-// }
+
+
+
+
+

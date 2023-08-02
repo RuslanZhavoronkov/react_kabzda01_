@@ -1,5 +1,5 @@
 import React from "react";
-import {MouseEvent} from "react"
+import { MouseEvent } from "react"
 
 export type ItemType = {
   title: string
@@ -21,7 +21,7 @@ export const Accordion = (props: AccordionPropsType) => {
   return (
     <div>
       <AccordionTitle title={props.titleValue} onChange={props.onChange} />
-      {!props.collapsed && <AccordionBody items={props.items} onClick={props.onClick}/>}
+      {!props.collapsed && <AccordionBody items={props.items} onClick={props.onClick} />}
     </div>
   );
 }
@@ -48,13 +48,16 @@ export type AccordionBodyPropsType = {
 const AccordionBody: React.FC<AccordionBodyPropsType> = (props) => {
 
   const onClickNameHandler = (value: any) => {
-           props.onClick(value)
+    props.onClick(value)
   }
+
+
   return (
 
     <ul>
-      {props.items.map((el, index) => <li onClick={()=>onClickNameHandler(el.value)} key={index}>{el.title}</li>)}
+      {props.items.map((el, index) => <li onClick={() => onClickNameHandler(el.value)} key={index}>{el.title}</li>)}
     </ul>
+
   );
 }
 
