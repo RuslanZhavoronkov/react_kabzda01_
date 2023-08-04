@@ -1,12 +1,13 @@
 import { useState } from "react";
 import { Select } from "./Select";
+import React from "react";
 
 export default {
     title: 'Accordion',
     component: Select
 }
 
-export const WithValue = () => {
+export const WithValueSecret = () => {
     const [value, setValue] = useState<any>('1')
 
     const onChangeHandler = (newValue: any) => setValue(newValue)
@@ -21,11 +22,12 @@ export const WithValue = () => {
                 ]} />
         </>
     )
-
-
 }
 
-export const WithoutValue = () => {
+
+export const WithValue = React.memo(WithValueSecret)
+
+export const WithoutValueSecret = () => {
     const [value, setValue] = useState<any>(null)
     const onChangeHandler = (newValue: string) => setValue(newValue)
 
@@ -43,6 +45,7 @@ export const WithoutValue = () => {
 
 }
 
+export const WithoutValue = React.memo(WithoutValueSecret)
 
 
 

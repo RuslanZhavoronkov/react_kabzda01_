@@ -5,7 +5,7 @@ type PropsType = {
   onChange: (on:boolean) => void
 };
 
-export function OnOff(props: PropsType) {
+export const OnOffSecret = (props: PropsType)=> {
 
     console.log("on:" + props.on)
 //  let [on, setOn] = useState(false);
@@ -46,3 +46,5 @@ export function OnOff(props: PropsType) {
     </div>
   );
 }
+
+export const OnOff = React.memo(OnOffSecret)

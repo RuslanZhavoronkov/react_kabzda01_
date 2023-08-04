@@ -10,13 +10,18 @@ export default {
 }
 
 // const callback = action('on or off clicked')
-export const OnMode = () => <OnOff on={true} onChange={x => x}/> //включенный режим
-export const OffMode = () => <OnOff on={false} onChange={x => x}/> //включенный режим
+export const OnModeSecret = () => <OnOff on={true} onChange={x => x}/> //включенный режим
+export const OnMode = React.memo(OnModeSecret)
 
-export const ModeChanging = () => {
+export const OffModeSecret = () => <OnOff on={false} onChange={x => x}/> //включенный режим
+export const OffMode = React.memo(OffModeSecret)
+
+export const ModeChangingSecret = () => {
     const [value, setValue]=useState<boolean>(true);
    return  <OnOff on={value} onChange={setValue} />;
 }
+
+export const ModeChanging = React.memo(ModeChangingSecret)
 
 function action(arg0: string): (on: boolean) => void {
     throw new Error('Function not implemented.');
