@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useCallback } from "react"
 import { useState, ChangeEvent, useMemo } from "react"
 
 
@@ -58,60 +58,128 @@ export const DifficultCountingExample = () => {
 }
 
 
-   
-    
-    
-    //Создадим две компоненты для демонстрации React Memo:
-    
-    //1
-    // type PropsTypeCount = {
-    //     counter: number
-    // }
-    
-    // const NewMessagesCounterSecret: React.FC<PropsTypeCount> = (props) => {
-    //     console.log("Counter")
-    //     return <div>{props.counter}</div>
-    // }
-    
-   // const NewMessagesCounter = React.memo(NewMessagesCounterSecret)
-    
-    
-    //2
-    type PropsUsersType = {
-         users: string[]
-     }
-    
-    const UsersSecret: React.FC<PropsUsersType> = (props) => {
-        console.log("Users Secret")
-        return <div>{props.users.map((el, i) => <div key={i}>{el}</div>)}</div>
+
+
+
+//Создадим две компоненты для демонстрации React Memo:
+
+//1
+// type PropsTypeCount = {
+//     counter: number
+// }
+
+// const NewMessagesCounterSecret: React.FC<PropsTypeCount> = (props) => {
+//     console.log("Counter")
+//     return <div>{props.counter}</div>
+// }
+
+// const NewMessagesCounter = React.memo(NewMessagesCounterSecret)
+
+
+//2
+type PropsUsersType = {
+    users: string[]
+}
+
+const UsersSecret: React.FC<PropsUsersType> = (props) => {
+    console.log("Users Secret")
+    return <div>{props.users.map((el, i) => <div key={i}>{el}</div>)}</div>
+}
+
+const Users = React.memo(UsersSecret)
+
+
+export const HelpsToReactMemo = () => {
+
+    console.log("HelpsToReactMemo")
+    const [counter, setCounter] = useState<number>(0)
+    let [users, setUsers] = useState<string[]>(['Dimych', 'Valera', 'Artem'])
+
+    const onClickButtonHandler = () => {
+        setCounter(counter + 1);
     }
-    
-    const Users = React.memo(UsersSecret)
-    
-    
-    export const HelpsToReactMemo = () => {
-        console.log("HelpsToReactMemo")
-        const [counter, setCounter] = useState<number>(0)
-        let [users, setUsers] = useState<string[]>(['Dimych', 'Valera', 'Artem'])
-    
-        const onClickButtonHandler = () => {
-            setCounter(counter + 1);
-        }
-        
-        const addUser = ()=>{
-            setUsers([...users, 'Sveta'])
-        }
-    
+
+    const addUser = () => {
+        setUsers([...users, 'Sveta'])
+    }
+
     const newArray = useMemo(() => {
         return users.filter(el => el.toLocaleLowerCase().indexOf('a') > -1);
     }, [users])
-        return (
-            <>
-                <button onClick = {onClickButtonHandler}>+</button>
-                <button onClick = {addUser}>+user</button>
-                {counter}
-                <Users users={newArray} />
-            </>
+    return (
+        <>
+            <button onClick={onClickButtonHandler}>+</button>
+            <button onClick={addUser}>+user</button>
+            {counter}
+            <Users users={newArray} />
+        </>
+
+    )
+}
+
+
+
+//useCallback
+
+
+export const LikeUseCallback = () => {
+
+    console.log("LikeUseCallback")
+    const [counter, setCounter] = useState<number>(0)
+    let [books, setBooks] = useState<string[]>(['React', 'JS', 'CSS', 'HTML'])
+
     
-        )
+
+    const onClickButtonHandler = () => {
+        setCounter(counter + 1);
     }
+
+    // const memoizedAddBook = useMemo(() => {
+    //    return () => {
+    //     console.log(books)
+    //     setBooks([...books, 'Angular'])
+    // }
+    // } , [books]) //Запомни этот колбэк. Пока не изменилась зависимость - состояние books, возвращай один и тот же колбэк
+
+
+    const memoizedAddBook = useCallback(() => {
+        
+         console.log(books)
+         setBooks([...books, 'Angular'])
+     
+     } , [books])
+
+
+    return (
+        <>
+            <button onClick={onClickButtonHandler}>+</button>
+
+            {counter}
+            <Book  addBook={memoizedAddBook} />
+        </>
+
+    )
+}
+
+
+type PropsBooksSecretType = {
+   
+    addBook: () => void
+}
+
+const BooksSecret: React.FC<PropsBooksSecretType> = (props) => {
+    console.log("Books Secret")
+
+    const onClickAddBookHandler = () => {
+        props.addBook()
+    }
+    return (
+        <div>
+            <button onClick={onClickAddBookHandler}>add book</button>
+           
+        </div>
+
+    )
+}
+
+const Book = React.memo(BooksSecret)
