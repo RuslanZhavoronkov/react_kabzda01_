@@ -54,5 +54,82 @@ export const SimpleExample = () => {
 }
 
 
+export const SetTimeoutExample = () => {
+
+    // const initValue = useMemo(()=>generateData(), []) 
+    const [counter, setCounter] = useState<number>(1)
+    const [fake, setFake] = useState<number>(1)
+
+    console.log('SetTimeoutExample')
+
+    const onClickButtonHandlerCounter = () => {
+        setCounter(counter + 1);
+    }
+
+    const onClickButtonHandlerFake = () => {
+        setFake(fake + 1);
+    }
+
+    useEffect(() => {
+       
+        setInterval(()=> {
+            console.log('tick :' + counter)
+            setCounter((state)=>state + 1);
+            }, 2000)
+
+    },[])
+
+    
 
 
+
+
+    return (
+        <>
+            Hello, counter: {counter}  - fake: {fake}
+            {/* <button onClick={onClickButtonHandlerCounter}>+counter</button>
+            <button onClick={onClickButtonHandlerFake}>+fake</button> */}
+        </>
+
+    )
+}
+
+export const SetWatchExample = () => {
+    
+    function generateWatch () {
+        return new Date();
+    }
+
+    type watchType = ReturnType<typeof generateWatch>
+    const [watch, setWatch] = useState<watchType>(generateWatch)
+    
+
+    // console.log('SetTimeoutExample')
+
+let hours = watch.getHours()
+let minutes = watch.getMinutes();
+let seconds = watch.getSeconds();   
+
+   
+useEffect (()=> {
+    console.log("One RAZIK")
+setInterval(()=> {
+    console.log("SETINTERVAL")
+    setWatch(()=>new Date())
+
+}, 1000)
+}, 
+[])
+
+
+    return (
+        <>
+
+        
+            {hours} : {minutes} : {seconds}
+            {/* <button onClick={onClickButtonHandlerCounter}>+counter</button>
+            <button onClick={onClickButtonHandlerFake}>+fake</button> */}
+        </>
+
+    )
+}
